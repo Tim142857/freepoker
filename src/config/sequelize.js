@@ -1,10 +1,12 @@
-import "dotenv/config";
+import 'dotenv/config';
 
-const { DB_HOST, DB_PORT = 5432, DB_NAME, DB_USER, DB_PASSWORD } = process.env;
+const {
+  DB_HOST, DB_PORT = 5432, DB_NAME, DB_USER, DB_PASSWORD,
+} = process.env;
 
 const defaultConfig = {
-  dialect: "mariadb",
-  timezone: "+01:00",
+  dialect: 'mariadb',
+  timezone: '+01:00',
   username: DB_USER,
   password: DB_PASSWORD,
   database: DB_NAME,

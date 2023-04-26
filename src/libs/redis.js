@@ -1,4 +1,4 @@
-import redis from "redis";
+import redis from 'redis';
 
 /**
  * Create redis client instance
@@ -8,19 +8,19 @@ import redis from "redis";
 // });
 const redisClient = redis.createClient({
   socket: {
-    host: "127.0.0.1",
-    port: "6379",
+    host: '127.0.0.1',
+    port: '6379',
   },
 });
 
-redisClient.on("connect", () => {
+redisClient.on('connect', () => {
   // Successfully connected to redis!
 });
 
-redisClient.on("error", (err) => {
+redisClient.on('error', (err) => {
   // TODO: There is an error caused by redis. Send it to monitoring tool!!
   // eslint-disable-next-line no-console
-  console.log("Redis error", err);
+  console.log('Redis error', err);
 });
 
 export default redisClient;

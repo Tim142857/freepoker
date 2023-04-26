@@ -1,9 +1,9 @@
-import { DataTypes, Model } from "sequelize";
+import { DataTypes, Model } from 'sequelize';
 
 export default function (sequelize) {
   class Tweet extends Model {
     static associate(models) {
-      Tweet.belongsTo(models.user, { foreignKey: "userId" });
+      Tweet.belongsTo(models.user, { foreignKey: 'userId' });
     }
   }
 
@@ -19,9 +19,9 @@ export default function (sequelize) {
       },
     },
     {
-      modelName: "tweet",
+      modelName: 'tweet',
       sequelize,
-    }
+    },
   );
 
   return Tweet;

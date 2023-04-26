@@ -1,7 +1,7 @@
-import createError from "http-errors";
+import createError from 'http-errors';
 
-import db from "@/database";
-import redisClient from "@/libs/redis";
+import db from '@/database';
+import redisClient from '@/libs/redis';
 
 /**
  * POST /tweets
@@ -14,7 +14,7 @@ export const createTweet = async (req, res, next) => {
     // Create tweet
     const tweetData = { ...req.body, userId };
     const tweet = await db.models.tweet.create(tweetData, {
-      fields: ["userId", "tweet"],
+      fields: ['userId', 'tweet'],
     });
 
     // Save this tweet to redis
@@ -41,9 +41,9 @@ export const getTweets = async (req, res, next) => {
       limit: perPage,
       include: {
         model: db.models.user,
-        attributes: ["id", "firstName", "lastName"],
+        attributes: ['id', 'firstName', 'lastName'],
       },
-      order: [["createdAt", "DESC"]],
+      order: [['createdAt', 'DESC']],
     });
 
     if (redisClient.connected) {
@@ -77,11 +77,11 @@ export const getTweetById = async (req, res, next) => {
       where: { id: tweetId },
       include: {
         model: db.models.user,
-        attributes: ["id", "firstName", "lastName"],
+        attributes: ['id', 'firstName', 'lastName'],
       },
     });
     if (!tweet) {
-      return next(createError(404, "There is no tweet with this id!"));
+      return next(createError(404, 'There is no tweet with this id!'));
     }
 
     // Save this tweet to redis
@@ -105,7 +105,7 @@ export const deleteTweet = async (req, res, next) => {
 
     const tweet = await db.models.tweet.findOne({ where: { id: tweetId, userId } });
     if (!tweet) {
-      return next(createError(404, "There is no tweet with this id!"));
+      return next(createError(404, 'There is no tweet with this id!'));
     }
 
     // Remove this tweet from redis, if exist
