@@ -3,24 +3,22 @@ module.exports = {
     es6: true,
     node: true,
   },
-  extends: [
-    'airbnb-base',
-  ],
+  extends: ["airbnb-base"],
   globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
+    Atomics: "readonly",
+    SharedArrayBuffer: "readonly",
   },
   settings: {
-    'import/resolver': {
-      'babel-module': {},
+    "import/resolver": {
+      "babel-module": {},
     },
   },
   parserOptions: {
     ecmaVersion: 2018,
-    sourceType: 'module',
+    sourceType: "module",
   },
   rules: {
-    'max-len': ['error', { code: 120 }],
-    'no-eval': 'off',
+    "max-len": ["error", { code: 120 }],
+    "no-eval": "off",
   },
 };
